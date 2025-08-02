@@ -22,4 +22,8 @@ public class EmployeeService {
     public Employee getEmployeeById(String id) {
         return employeeRepository.getEmployeeById(id);
     }
+    public List<Employee> getEmployeeWithParam(String firstName, String lastName) {
+
+        return employeeRepository.getEmployeeWithParam(firstName,lastName); // This method currently does not filter or return any employees based on parameters
+    }
 }
