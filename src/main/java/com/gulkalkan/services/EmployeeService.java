@@ -4,6 +4,8 @@ import com.gulkalkan.Model.Employee;
 import com.gulkalkan.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -26,4 +28,8 @@ public class EmployeeService {
 
         return employeeRepository.getEmployeeWithParam(firstName,lastName); // This method currently does not filter or return any employees based on parameters
     }
+ public Employee saveEmployee(Employee employee) {
+        return employeeRepository.saveEmployee(employee);
+ }
+
 }

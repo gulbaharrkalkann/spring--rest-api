@@ -57,4 +57,8 @@ List<Employee> employeeWithParams = new ArrayList<>();
 return employeeWithParams;
 
     }
+    public Employee saveEmployee(Employee employee) {
+        employeeList.add(employee);
+        return employee;
+    }
 }
