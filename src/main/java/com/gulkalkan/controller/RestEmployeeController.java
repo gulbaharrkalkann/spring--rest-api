@@ -1,6 +1,7 @@
 package com.gulkalkan.controller;
 
 import com.gulkalkan.Model.Employee;
+import com.gulkalkan.Model.UpdateEmployeeRequest;
 import com.gulkalkan.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,5 +37,14 @@ public class RestEmployeeController {
     public Employee saveEmployee(@RequestBody Employee employee) {
 
         return employeeService.saveEmployee(employee);
+    }
+    @DeleteMapping(path = "/delete-employee/{id}")
+    public boolean deleteEmployee (@PathVariable(name="id")String id){
+        return employeeService.deleteEmployee(id);
+    }
+@PutMapping(path = "/update-employee/{id}")
+    public Employee updateEmployee(@PathVariable(name="id")String id, @RequestBody UpdateEmployeeRequest request) {
+
+        return employeeService.updateEmployee(id, request);
     }
 }

@@ -1,6 +1,7 @@
 package com.gulkalkan.services;
 
 import com.gulkalkan.Model.Employee;
+import com.gulkalkan.Model.UpdateEmployeeRequest;
 import com.gulkalkan.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,12 @@ public class EmployeeService {
  public Employee saveEmployee(Employee employee) {
         return employeeRepository.saveEmployee(employee);
  }
+    public boolean deleteEmployee(String id) {
+        return employeeRepository.deleteEmployee(id);
+    }
+    public Employee updateEmployee(String id, UpdateEmployeeRequest request) {
+
+        return employeeRepository.updateEmployee(id, request);
+    }
 
 }

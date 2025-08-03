@@ -1,6 +1,7 @@
 package com.gulkalkan.repository;
 
 import com.gulkalkan.Model.Employee;
+import com.gulkalkan.Model.UpdateEmployeeRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -60,5 +61,46 @@ return employeeWithParams;
     public Employee saveEmployee(Employee employee) {
         employeeList.add(employee);
         return employee;
+    }
+    public boolean deleteEmployee(String id){
+        Employee deleteEmployee = null;
+        for (Employee employee : employeeList) {
+            if (id.equals(employee.getId())) {
+               deleteEmployee = employee;
+                break;
+            }
+        }
+        if (deleteEmployee== null) {
+            return false;
+        }
+        employeeList.remove(deleteEmployee);
+        return true;
+    }
+    private Employee findEmployeeById(String id) {
+        Employee findEmployee = null;
+        for (Employee employee : employeeList) {
+            if (employee.getId().equals(id)) {
+            findEmployee = employee;
+            break;
+            }
+        }
+        return findEmployee;
+
+    }
+
+    public Employee updateEmployee(String id , UpdateEmployeeRequest request){
+  Employee findEmployeeBy = findEmployeeById(id);
+  if (findEmployeeBy != null) {
+      deleteEmployee(id);
+
+      Employee updatedEmployee = new Employee();
+      updatedEmployee.setId(id);
+        updatedEmployee.setFirstName(request.getFirstName());
+        updatedEmployee.setLastName(request.getLastName());
+        employeeList.add(updatedEmployee);
+        return updatedEmployee;
+
+  }
+  return null;
     }
 }
